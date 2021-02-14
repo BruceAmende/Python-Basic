@@ -1,29 +1,48 @@
-# module importeren 
-from tkinter import * 
-from tkinter.ttk import *
-  
- 
-#strftime-functie importeren en
-# systeemtijd ophalen 
-from time import strftime 
-  
-# maken van een tkinter window 
-root = Tk() 
-root.title('Clock') 
-  
-# Deze functie is er om tijd in het label de zetten
-def time(): 
-    string = strftime('%H:%M:%S %p') 
-    lbl.config(text = string) 
-    lbl.after(1000, time) 
-  
-# Het stylen van de klok 
-lbl = Label(root, font = ('impact', 40, 'bold'), 
-            background = 'green', 
-            foreground = 'white') 
-  
-# De klok in het midden zetten
-lbl.pack(anchor = 'center') 
-time() 
-  
-mainloop() 
+import time
+
+#variablen
+
+seconden = input("Sec: ")
+
+s = int(seconden)
+
+minuut = input("minuut:")
+
+m = int(minuut)
+
+uur = input("uur:")
+
+h = int(uur)
+
+# als s -> seconden kleiner is dan 60 loopt hij de print en doet er telkens 1 bij op 60 wordt seconden gereset en begint hij opnieuw
+
+while (s < 60):
+
+ print (""+str(h)+""+":"+str(m)+""+":"+str(s))
+
+ time.sleep(1)
+
+ s=s+1
+
+#als seconden op 60 zit +1 minuut reset timer
+
+ if (s == 60):
+
+  m=m+1
+
+  s = 0
+
+#als minuut op 60 zit +1 uur en reset minuten
+
+ elif(m == 60):
+
+   h=h+1
+
+   m = 0
+
+#zodra uur op 24 zit reset uren
+
+ elif(h == 24):
+
+    h = 0
+
